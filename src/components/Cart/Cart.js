@@ -14,6 +14,9 @@ const Cart = () => {
                     return (
                         <div key={prod.id}>
                             {prod.name}
+                            &nbsp;Cantidad:&nbsp;
+                            {prod.quantity}
+                            <hr></hr>
                         </div>
                     )
                 })
