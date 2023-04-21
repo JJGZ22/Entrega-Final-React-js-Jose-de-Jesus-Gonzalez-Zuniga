@@ -1,12 +1,30 @@
-import { Link } from "react-router-dom"
+import './Item.css'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Item = ({ id, name, price,platform }) => {
+const Item = ({id, name, img, price }) => {
+
+    // const navigate = useNavigate()
+
     return (
-        <div style={{ background: 'teal', margin: 10,borderRadius: 10}}>
-            <h2>{name}</h2>
-            <h3>precio: {price}</h3>
-            <Link to={`/item/${id}`} style={{ background: 'orange'}}><button className="btn btn-danger btn-outline-info navbtn">Ver Detalles</button></Link>
-        </div>
+        <article className="CardItem">
+            <header className="Header">
+                <h2 className="ItemHeader">
+                    {name}
+                </h2>
+            </header>
+            <picture>
+                <img src={img} alt={name} className="ItemImg"/>
+            </picture>
+            <section>
+                <p className="Info">
+                    Precio: {price}
+                </p>
+            </section>           
+            <footer className='ItemFooter'>
+               <Link to={`/item/${id}`} className='Option'><button className="btn btn-danger btn-outline-info navbtn">Ver Detalles</button></Link>
+               {/* <button onClick={() => navigate('/item')} className='Option'>Ver detalle</button> */}
+            </footer>
+        </article>
     )
 }
 

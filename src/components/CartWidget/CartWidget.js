@@ -1,10 +1,20 @@
-import './ItemListContainer.css'
-const CartWidget = () =>{
- return(
-    <div>
-        <img className="cartimg" src="https://cdn-icons-png.flaticon.com/512/9252/9252168.png" alt="Cart icon" /> <label className='text-warning'>0</label>
-        
-    </div>
- )   
+import './CartWidget.css'
+import cart from './CartIcon/carticon.png'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
+import { useNavigate } from 'react-router-dom'
+
+const CartWidget = () => {
+    const { totalQuantity, total } = useContext(CartContext)
+
+    const navigate = useNavigate()
+
+    return(
+        <div className="CartWidget" onClick={() => navigate('/cart')}>
+            <img src={cart} alt='cart-widget' className='CartImg'/>
+            {totalQuantity} total ${total}
+        </div>
+    );
 }
+
 export default CartWidget
