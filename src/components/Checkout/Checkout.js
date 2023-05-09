@@ -94,11 +94,11 @@ const Checkout = () => {
                 </label>
                 <label>
                     Telefono :
-                    <input type="number" value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
+                    <input type="number" value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
                 </label>
                 <label>
                     Direccion:
-                    <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
+                    <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
                 </label>
                 { orderId ? <h2>El id de su orden es: {orderId}</h2> : <button type='button' onClick={handleConfirm}>Generar orden</button> }
             </form>}
