@@ -6,6 +6,9 @@ import { useNotification } from '../../notification/NotificationService'
 import { useNavigate } from 'react-router-dom'
 
 const Checkout = () => {
+    const [nombre, setNombre] = useState('')
+    const [direccion, setDireccion] = useState('')
+    const [telefono, setTelefono] = useState('')
     const [orderId, setOrderId] = useState('')
     const [loading, setLoading] = useState(false)
     const { cart, total, clearCart } = useContext(CartContext)
@@ -20,9 +23,9 @@ const Checkout = () => {
             setLoading(true)
             const objOrder = {
                 buyer: {
-                    name: 'Panchito Fernandez',
-                    phone: '123456789',
-                    address: 'mi direccion 2055'
+                    name: nombre,
+                    phone: telefono,
+                    address: direccion
                 },
                 items: cart,
                 total: total
@@ -84,8 +87,22 @@ const Checkout = () => {
         <div>
             <h1>Checkout</h1>
 
-            {/* <Form onConfirm={handleConfirm}/> */}
-            { orderId ? <h2>El id de su orden es: {orderId}</h2> : <button onClick={handleConfirm}>Generar orden</button> }
+            { <form onSubmit={handleConfirm}> 
+             <label>
+                    Nombre :
+                    <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                </label>
+                <label>
+                    Telefono :
+                    <input type="number" value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
+                </label>
+                <label>
+                    Direccion:
+                    <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
+                </label>
+                { orderId ? <h2>El id de su orden es: {orderId}</h2> : <button type='button' onClick={handleConfirm}>Generar orden</button> }
+            </form>}
+            
         </div>
     )
 }
